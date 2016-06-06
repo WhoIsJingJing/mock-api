@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="mockApp">
+    <head>
+        <meta charset="utf-8">
+        <title>api mock</title>
+        <link rel="stylesheet" href="vendor/jsoneditor/dist/jsoneditor.css">
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="vendor/sweetalert/sweetalert.css">
+        <style></style>
+    </head>
+    <body>
+        <div class="container-fluid" ng-controller="MainCtrl">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="col-md-12">
+                        当前编辑：{{info.currentEdit}}
+                    </div>
+                    <div jsone-eitor style="height:800px;"></div>
+                </div>
+                <div class="col-md-7">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <button class="btn btn-primary btn-block" ng-click="apiRefresh()">刷新</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary btn-block" ng-click="apiAddItem()">添加API</button>
+                        </div>
+                    </div>
+                    <div ng-class="{'bg-info':info.currentEdit==apisItem}" class="col-md-12" ng-repeat="apisItem in info.apis track by $index">
+                        <div class="col-md-4">
+                            <a ng-click="apiRemoveItem(apisItem)">删除</a>&nbsp;|&nbsp;
+                            <a ng-click="apiEditItem(apisItem)">编辑</a>&nbsp;|&nbsp;
+                            <a ng-show="info.currentEdit==apisItem" ng-click="apiSaveItem(apisItem)">保存</a>
+                        </div>
+                        <div class="col-md-8">{{apisItem}}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="vendor/jquery/dist/jquery.js"></script>
+        <script src="vendor/jsoneditor/dist/jsoneditor.js"></script>
+        <script src="vendor/angular.js"></script>
+        <script src="vendor/angular-route.js"></script>
+        <script src="vendor/angular-resource.js"></script>
+        <script src="vendor/angular-resource.js"></script>
+        <script src="vendor/sweetalert/sweetalert-dev.js"></script>
+
+        <script src="js/mockapi.js"></script>
+
+    </body>
+</html>
